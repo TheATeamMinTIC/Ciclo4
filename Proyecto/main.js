@@ -1,0 +1,1 @@
+alert("hola mundo desde js"); // muestra un mensaje en pantalla con el texto "hola mundo desde js"
