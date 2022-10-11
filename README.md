@@ -1,9 +1,5 @@
 # Ciclo4
-Ciclo 4 aplicación 2022
-En este proyecto se desarrolla un aplicativo web para que un administrador pueda gestionar los 
-ingresos y egresos de su empresa. El sistema debe permitir visualizar los 
-totales de la empresa para que el gerente pueda tomar decisiones sobre la 
-situación financiera.
+En este proyecto se desarrolla un aplicativo web que funcione como modelo de sistema de información que soporte la gestión de una tienda o emprendimiento local y mejore los procesos.  
 
 
 # Hola, este es nuestro equipo de desarrollo! 👋
