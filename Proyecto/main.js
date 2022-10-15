@@ -1,1 +1,0 @@
-alert("hola mundo. Atte: A Team"); // muestra un mensaje en pantalla con el texto "hola mundo. Atte: A Team"
