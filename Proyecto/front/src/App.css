@@ -27,7 +27,7 @@ body {
 }
 
 nav {
-  background-color: #232f3e;
+  background-color: #0f945f;
   padding: 1rem 1rem;
 }
 
@@ -613,4 +613,14 @@ ul.CTAs a {
 .review_user {
   font-size: 0.8rem;
   color: grey;
+}
+
+.salesadmin{
+  margin-top: 10rem;
+  text-align: center;
+  color: #232f3e;
+  margin: 70px 0;
+  margin-left: 30px;
+  margin-right: 30px;
+
 }
