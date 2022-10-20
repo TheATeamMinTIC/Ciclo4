@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table'
 
 const Ventasadmin = () => {
   return (
-    <div>
+    <div className='salesadmin' >
         <h1>Ventas HU_009 Moiso</h1>
         <Table striped bordered hover>
       <thead>
