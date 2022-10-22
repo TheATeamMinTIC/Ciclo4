@@ -2,7 +2,9 @@ import React from 'react'
 
 const Verproductos = () => {
   return (
-    <div>Verproductos HU_008 Saúl </div>
+    <div>
+      <h1>Productoscliente HU_010 Andres R</h1>
+     </div>
   )
 }
 
