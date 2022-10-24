@@ -1,8 +1,29 @@
 import React, { Fragment } from 'react'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
+
 
 const Header = () => {
   return (
+    
     <Fragment>
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand href="/">cursos.com</Navbar.Brand> 
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+
+          <Nav className="me-auto">
+            <Nav.Link href="/ventasadmin">Ventas</Nav.Link>
+            <Nav.Link href="/productoscliente">Cliente</Nav.Link>
+            <Nav.Link href="/productosadmin">Admin</Nav.Link> 
+            
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
         <nav className='navbar row'>
             <div className='col-12 col-md-3'>
                 <div className='navbar-brand'>
@@ -28,7 +49,7 @@ const Header = () => {
             <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
                 <span><button type="button" class="btn btn-warning">Iniciar sesión</button></span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <i class="fa fa-shopping-cart fa-2x text-white" aria-hidden="true"></i>   
+                <i class="fa fa-shopping-cart fa-2x text-white" aria-hidden="true"></i><Link to={`/carrito`} ></Link>   
                 <span className="ml-1" id="cart_count">2</span>
             </div>
 
