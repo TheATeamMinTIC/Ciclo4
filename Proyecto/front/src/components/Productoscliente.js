@@ -2,7 +2,9 @@ import React from 'react'
 
 const Productoscliente = () => {
   return (
-    <div>Productoscliente HU_010 Andres R </div>
+    <div>
+      <h1>Productoscliente HU_010 Andres R</h1>
+     </div>
   )
 }
 

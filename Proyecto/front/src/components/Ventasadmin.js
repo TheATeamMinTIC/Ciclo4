@@ -9,9 +9,12 @@ const Ventasadmin = () => {
       <thead>
         <tr>
           <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Primer nombre</th>
+          <th>Segundo nombre</th>
+          <th>Usuario</th>
+          <th>Fecha</th>
+          <th>Producto</th>
+
         </tr>
       </thead>
       <tbody>
@@ -20,18 +23,18 @@ const Ventasadmin = () => {
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
+          <td>20/10/22</td>
+          <td>Curso java</td>
         </tr>
         <tr>
           <td>2</td>
           <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
+          <td>28/10/22</td>
+          <td>Curso java 2</td>
         </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        
       </tbody>
     </Table>
         

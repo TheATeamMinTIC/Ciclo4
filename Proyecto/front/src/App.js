@@ -9,19 +9,29 @@ import Productoscliente from './components/Productoscliente';
 import Ventasadmin from './components/Ventasadmin';
 import Verproductos from './components/Verproductos';
 
+import {BrowserRouter as Router, Routes,Route} from 'react-router-dom';
+
 function App() {
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
       
       <Header/>
-      <Carrito/>
-      <Productosadmin/>
-      <Productoscliente/>
-      <Ventasadmin />
-      <Verproductos/>
+      {/* Navegacion */}
+      <Routes>
+        <Route path="/" element={<Verproductos/>}/>
+        <Route path="/carrito" element={<Carrito/>}/>
+        <Route path="/productosadmin" element={<Productosadmin/>}/>
+        <Route path="/productoscliente" element={<Productoscliente/>}/>
+        <Route path="/ventasadmin" element={<Ventasadmin/>}/> 
+        
+      </Routes>
+      
       <Footer/>
 
     </div>
+
+    </Router>
   );
 }
 
