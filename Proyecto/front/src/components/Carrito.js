@@ -22,7 +22,7 @@ const Carrito = () => {
   return (
     <div>
     <Fragment>
-    <h1>Carrito HU_011 Andres V</h1>
+    <h1>Carrito</h1>
     <div class="container">
 		<h1><i class="fa fa-shopping-cart" aria-hidden="true"></i>Carrito</h1>
 		<hr/>
