@@ -8,7 +8,7 @@ const Productosadmin = () => {
   }
   return (
     <Fragment>
-      <h1>Productosadmin HU_008</h1>
+      <center><h1>Productos Admin</h1></center>
       <form class="container">
         <div >
           <label for="exampleInputEmail1">Nombre Producto</label>

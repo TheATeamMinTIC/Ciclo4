@@ -5,7 +5,7 @@ const Footer = () => {
     <Fragment>
         <footer className='py-1'>
             <p className='text-center mt-1'>
-                Cursos online proyecto práctico ciclo 4 MinTIC &copy; {new Date().getFullYear()}
+                Aplicativo web para vender cursos online desarrollado por el A-Team &copy; {new Date().getFullYear()}
             </p>
         </footer>
 
