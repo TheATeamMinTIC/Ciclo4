@@ -5,7 +5,7 @@ import Carrito from './components/Carrito';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Productosadmin from './components/Productosadmin';
-import Productoscliente from './components/Productoscliente';
+//import Productoscliente from './components/Productoscliente';
 import Ventasadmin from './components/Ventasadmin';
 import Verproductos from './components/Verproductos';
 
@@ -22,8 +22,10 @@ function App() {
         <Route path="/" element={<Verproductos/>}/>
         <Route path="/carrito" element={<Carrito/>}/>
         <Route path="/productosadmin" element={<Productosadmin/>}/>
-        <Route path="/productoscliente" element={<Productoscliente/>}/>
+        <Route path="/productoscliente" element={<Verproductos/>}/>
         <Route path="/ventasadmin" element={<Ventasadmin/>}/> 
+        
+        
         
       </Routes>
       
