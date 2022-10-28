@@ -5,12 +5,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 
 
+
+
 const Header = () => {
   return (
     
     <Fragment>
     <Navbar bg="light" expand="lg">
       <Container>
+       
         <Navbar.Brand href="/">NOVA.com</Navbar.Brand> 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -28,7 +31,7 @@ const Header = () => {
         <nav className='navbar row'>
             <div className='col-12 col-md-3'>
                 <div className='navbar-brand'>
-                    <img src="./images/logo.png" alt="NOVA COURSES"></img>
+                    <img  className='logo' src="./nova.png" alt="NOVA COURSES"></img>
                 </div>
             </div>
 
