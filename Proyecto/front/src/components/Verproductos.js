@@ -25,7 +25,7 @@ const Verproductos = () => {
     {loading ? <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> : ( //si esta cargando muestra el mensaje loading si no muestra el fragment de abajo 
         <Fragment>
         
-        <h1 id='encabezado_productos text-center'>Cursos</h1> 
+        <center><h1 id='encabezado_productos text-center'>Cursos</h1> </center>
         <section id="productos" className='container mt-5'>
                 <div className='row'>
                     {productos && productos.map (producto => ( //traemos del objeto productos la data si productos existe, mapear los productos y retornarlos

@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table'
 const Ventasadmin = () => {
   return (
     <div className='salesadmin' >
-        <h1>Ventas HU_009</h1>
+        <h1>Historico de ventas</h1>
         <Table striped bordered hover>
       <thead>
         <tr>
