@@ -3,6 +3,7 @@ import {useDispatch,useSelector} from "react-redux";
 import { useParams } from "react-router-dom";
 import {getProductDetails} from "../../actions/productActions";
 import {Carousel} from "react-bootstrap"; 
+import MetaData from "../layout/MetaData"
 
 export const ProductDetails = () => {
     const {loading,error,product} = useSelector(state => state.productDetails);
@@ -36,6 +37,7 @@ export const ProductDetails = () => {
         <Fragment>
             {loading ? <h1>Loading...</h1> : error ? <h1>{error}</h1> : (
                 <Fragment>
+                    <MetaData title={product.nombre}/>
                     <div className="row f-flex justify-content-around">
                         <div className="col-12 col-lg-5 img-fluid" id="imagen_producto">
                             <Carousel pause='hover'>
@@ -78,6 +80,7 @@ export const ProductDetails = () => {
                             <div className="alert alert-danger mt-5" type="alert">Inicia Sesión para dejar tu review</div>
                         </div>
                     </div>
+                    
                 </Fragment>
             )}
         </Fragment>
