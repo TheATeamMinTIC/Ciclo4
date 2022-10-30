@@ -1,11 +1,12 @@
 import React from 'react'
 import {Helmet} from 'react-helmet'
 
-const MetaData = ({tittle}) =>{
+const MetaData = ({title}) => {
     return(
         <Helmet>
-            <tittle>{`${tittle}- NOVA Courses`}</tittle>
+            <title>{`${title} - NOVA COURSES`}</title>
         </Helmet>
     )
+
 }
 export default MetaData
