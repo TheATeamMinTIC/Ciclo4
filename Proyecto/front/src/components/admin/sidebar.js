@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Sidebar = () => {
     return (
         <div className="sidebar-wrapper">
-            <nav id="sidebar">
+            <nav id="sidebar"> 
                 <ul className="list-unstyled components">
                     <li>
                         <Link to="/Dashboard"><i className="fa fa-tachometer"></i> Administración</Link>

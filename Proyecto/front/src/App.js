@@ -11,7 +11,7 @@ import Verproductos from './components/Verproductos';
 import { ProductDetails } from './components/products/ProductDetails';
 import {BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import {Dashboard} from './components/admin/Dashboard';
-import {ProductsList} from './components/admin/ProductsList'
+
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
         <Route path="/ventasadmin" element={<Ventasadmin/>}/> 
         <Route path="/producto/:id" element={<ProductDetails/>}/>
         <Route path='/admin/dashboard' element={<Dashboard/>}/>
-        <Route path='/admin/productsList' element={<ProductsList/>}/>
+      
         
         
       </Routes>
