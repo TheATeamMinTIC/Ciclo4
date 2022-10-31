@@ -11,7 +11,7 @@ import Verproductos from './components/Verproductos';
 import { ProductDetails } from './components/products/ProductDetails';
 import {BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import {Dashboard} from './components/admin/Dashboard';
-import {ProductsList} from './components/admin/ProductsList';
+import ProductList from './components/admin/ProductList';
 import NewProduct from './components/admin/newProduct';
 
 
@@ -30,7 +30,7 @@ function App() {
         <Route path="/ventasadmin" element={<Ventasadmin/>}/> 
         <Route path="/producto/:id" element={<ProductDetails/>}/>
         <Route path='/admin/dashboard' element={<Dashboard/>}/>
-        <Route path="/productList" element={<ProductsList />}/>
+        <Route path="/productList" element={<ProductList />}/>
         <Route path="/nuevoProducto" element={<NewProduct />}/>     
         
         

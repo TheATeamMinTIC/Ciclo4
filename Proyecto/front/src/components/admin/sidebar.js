@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Sidebar = () => {
-    return (
-        <div className="sidebar-wrapper">
-            <nav id="sidebar"> 
+export const Sidebar = () => {
+  return (
+    <div className="sidebar-wrapper">
+            <nav id="sidebar">
                 <ul className="list-unstyled components">
                     <li>
                         <Link to="/Dashboard"><i className="fa fa-tachometer"></i> Administración</Link>
@@ -12,10 +12,11 @@ const Sidebar = () => {
 
                     <li>
                         <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle"><i
-                            className="fa fa-product-hunt"></i> Productos</a>
+                            className="fa fa-product-hunt"></i> Productos</a> {/* submenu de productos, cuando de click me abre las opciones */}
+                            
                         <ul className="collapse list-unstyled" id="productSubmenu">
                             <li>
-                                <Link to="/productList"><i className="fa fa-clipboard"></i> Todos</Link>
+                                <Link to="/ProductList"><i className="fa fa-clipboard"></i> Todos</Link>
                             </li>
 
                             <li>
@@ -39,7 +40,7 @@ const Sidebar = () => {
                 </ul>
             </nav>
         </div>
-    )
+  )
 }
 
 export default Sidebar
