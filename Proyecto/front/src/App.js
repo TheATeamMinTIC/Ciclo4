@@ -13,6 +13,7 @@ import {BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import {Dashboard} from './components/admin/Dashboard';
 import ProductList from './components/admin/ProductList';
 import NewProduct from './components/admin/newProduct';
+import UserList from './components/admin/UserList';
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
         <Route path='/admin/dashboard' element={<Dashboard/>}/>
         <Route path="/productList" element={<ProductList />}/>
         <Route path="/nuevoProducto" element={<NewProduct />}/>     
-        
+        <Route path="/userList" element={<UserList />}/>
         
       </Routes>
       
