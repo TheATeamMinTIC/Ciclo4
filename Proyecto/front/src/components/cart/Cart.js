@@ -23,30 +23,30 @@ const Cart = () => {
    let cartItems=[
         {
             "_id": "63513206109735e58d94addd",
-            "nombre": "Agility Dog Creamy Food",
+            "nombre": "html",
             "precio": 69000,
-            "imagen": "./images/productos/agility_blando_perros.png",
+            "imagen": "https://cdn-icons-png.flaticon.com/512/732/732212.png",
             "inventario": 40,
         },
         {
             "_id": "63513298109735e58d94ade0",
-            "nombre": "Chunky Cachorros alimento humedo",
-            "precio": 23000,
-            "imagen": "./images/productos/chunky_blando_perros.jpeg",
+            "nombre": "CSS",
+            "precio": 99000,
+            "imagen": "https://cdn-icons-png.flaticon.com/512/919/919826.png",
             "inventario": 120,
         },
         {
             "_id": "635132ea109735e58d94ade3",
-            "nombre": "Chunky gatitos alimento humedo",
-            "precio": 18000,
-            "imagen": "./images/productos/felix_blando_gatos.jpeg",
+            "nombre": "javascript",
+            "precio": 180000,
+            "imagen": "https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png",
             "inventario": 20,
         },
         {
             "_id": "63513379109735e58d94ade6",
-            "nombre": "Purina Pedegree Perros alimento humedo",
+            "nombre": "Java 1",
             "precio": 20000,
-            "imagen":  "./images/productos/pedegree_blando_perros.jpeg",
+            "imagen":  "https://assets.stickpng.com/images/58480979cef1014c0b5e4901.png",
             "inventario": 200,
         }
     ]

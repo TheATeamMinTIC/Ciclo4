@@ -1,7 +1,7 @@
 
 import './App.css';
 import React from 'react';
-import Carrito from './components/Carrito';
+
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Productosadmin from './components/Productosadmin';
@@ -25,7 +25,7 @@ function App() {
       {/* Navegacion */}
       <Routes>
         <Route path="/" element={<Verproductos/>}/>
-        <Route path="/carrito" element={<Carrito/>}/>
+        
         <Route path="/productosadmin" element={<Productosadmin/>}/>
         <Route path="/productoscliente" element={<Verproductos/>}/>
         <Route path="/ventasadmin" element={<Ventasadmin/>}/> 
@@ -34,7 +34,7 @@ function App() {
         <Route path="/productList" element={<ProductList />}/>
         <Route path="/nuevoProducto" element={<NewProduct />}/>     
         <Route path="/userList" element={<UserList />}/>
-        <Route path="/carrito" element={<Cart />}/>
+        <Route path="/cart" element={<Cart />}/>
         
       </Routes>
       

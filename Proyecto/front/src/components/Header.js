@@ -61,7 +61,7 @@ const Header = () => {
                                 <Link className="dropdown-item" to="/">Cerrar Sesion</Link>
                             </div>
                     </div>
-                    <Link to="/carrito"><i class="fa fa-shopping-cart fa-2x text-white" aria-hidden="false"></i>
+                    <Link to="/cart"><i class="fa fa-shopping-cart fa-2x text-white" aria-hidden="false"></i>
                         <span className="ml-1" id="cart_count">2</span></Link>
             </div>
 

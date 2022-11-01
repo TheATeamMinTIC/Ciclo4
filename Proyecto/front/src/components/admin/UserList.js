@@ -8,16 +8,17 @@ import { getUsers } from '../../actions/userActions'
 import {Link } from "react-router-dom"
 
 export const UserList = () => {
+    
     const { loading, usuarios} = useSelector(state=> state.users)
     //const alert= useAlert();
-
+    
     const dispatch = useDispatch();
     useEffect(() => {
         // if (error){
         //     return alert.error(error)
         // }
 
-        dispatch(getUsers());
+        dispatch(getUsers);
     }, [dispatch])
 
 
@@ -25,8 +26,8 @@ export const UserList = () => {
         const data = { //data es un objeto
             columns: [ //se reemplaza luego por la data de la base de datos
                 {
-                    label: 'Nombre',
-                    field: 'nombre',
+                    label: 'Name',
+                    field: 'name',
                     sort: 'asc'
                 },
                 {
@@ -56,31 +57,31 @@ export const UserList = () => {
             ],
             rows: [] //tantas filas como productos haya en la base de datos
         }
-        usuarios.forEach(user => { //recorro todos los productos por cada producto que encuentre voy a crear una fila
-            data.rows.push({ //agrego una fila a la tabla con los datos del producto que estoy recorriendo en ese momento 
-                nombre: user.name, 
+        usuarios.forEach(user => {
+            data.rows.push({ //se reemplaza luego por la data de la base de datos
+                name: user.name,
                 email: user.email,
                 password: user.password,
-                avatar: user.avatar,
+                avatar: user.avatar.url,
                 role: user.role,
-                actions: <Fragment> {/* fragment es un contenedor que no se muestra en el html */}
+                actions: <Fragment>
                     <Link to={`/usuario/${user._id}`} className="btn btn-primary py-1 px-2">
                         <i className="fa fa-eye"></i>
-                    </Link><Link to="/" className="btn btn-warning py-1 px-2">
-                    <i class="fa fa-pencil"></i>
+                        </Link><Link to="/" className="btn btn-warning py-1 px-2" >
+                        <i className="fa fa-pencil"></i>
                     </Link>
 
                     <Link to="/" className="btn btn-danger py-1 px-2">
                         <i className="fa fa-trash"></i>
-                    </Link>
-                    
-
+                    </Link> 
                 </Fragment>
             })
         })
-
-        return data; //devuelvo la data con los productos
+        return data;
     }
+
+    
+        
 
   return (
     <Fragment>
