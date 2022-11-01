@@ -21,7 +21,7 @@ const Header = () => {
             <Nav.Link href="/ventasadmin">Ventas</Nav.Link>
             <Nav.Link href="/productoscliente">Cliente</Nav.Link>
             <Nav.Link href="/productosadmin">Admin</Nav.Link> 
-            <Nav.Link href="/carrito">Carrito</Nav.Link> 
+            <Nav.Link href="/cart">Carrito</Nav.Link> 
             
           </Nav>
         </Navbar.Collapse>
