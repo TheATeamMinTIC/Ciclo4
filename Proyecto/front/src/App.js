@@ -14,7 +14,7 @@ import {Dashboard} from './components/admin/Dashboard';
 import ProductList from './components/admin/ProductList';
 import NewProduct from './components/admin/newProduct';
 import UserList from './components/admin/UserList';
-
+import Cart from './components/cart/Cart';
 
 function App() {
   return (
@@ -34,6 +34,7 @@ function App() {
         <Route path="/productList" element={<ProductList />}/>
         <Route path="/nuevoProducto" element={<NewProduct />}/>     
         <Route path="/userList" element={<UserList />}/>
+        <Route path="/carrito" element={<Cart />}/>
         
       </Routes>
       

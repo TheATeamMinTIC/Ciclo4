@@ -30,7 +30,7 @@ const Header = () => {
         <nav className='navbar row'>
             <div className='col-12 col-md-3'>
                 <div className='navbar-brand'>
-                    <img  className='logo' src="./nova.png" alt="NOVA COURSES"></img>
+                <Link to="/" ><img  className='logo' src="./nova.png" alt="NOVA COURSES"></img></Link>
                 </div>
             </div>
 
@@ -61,8 +61,8 @@ const Header = () => {
                                 <Link className="dropdown-item" to="/">Cerrar Sesion</Link>
                             </div>
                     </div>
-                <i class="fa fa-shopping-cart fa-2x text-white" aria-hidden="true"><Link to={`/carrito`} ></Link></i>   
-                <span className="ml-1" id="cart_count">2</span>
+                    <Link to="/carrito"><i class="fa fa-shopping-cart fa-2x text-white" aria-hidden="false"></i>
+                        <span className="ml-1" id="cart_count">2</span></Link>
             </div>
 
         </nav>
