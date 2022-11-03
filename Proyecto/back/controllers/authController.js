@@ -1,7 +1,8 @@
 //CRUD para usuarios
 const User = require("../models/auth")
 const ErrorHandler = require("../utils/errorHandler")
-const catchAsyncErrors = require("../middleware/catchAsyncErrors")
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const { use } = require("../routes/auth");
 
 //Registrar un nuevo usuario /api/usuario/registro
 
@@ -18,10 +19,47 @@ exports.newUser = catchAsyncErrors(async (req, res, next) =>{
         },
     })
 
+    const token = user.getJwtToken();
+
     res.status(201).json({
         success:true,
+        token,
         user
     })
+})
+
+//Iniciar sesion-Login
+
+exports.loginUser = catchAsyncErrors (async(req, res, next)=>{
+    const {email,password} = req.body;
+
+    //Revisar si los campos estan completos
+    if (!email || !password){
+        return next(new ErrorHandler("Por favor ingrese email & contraseña",400))
+    }
+
+    //Buscar al usuario en nuestra base de datos
+    const user= await User.findOne({email}).select("+password")
+
+    if(!user){
+        return next(new ErrorHandler("Email o contraseña invalidos",401))
+    }    
+
+    //Comparar contraseñas, verificar si esta bien
+    const contrasenaOK= await user.compararPass(password);
+
+    if(!contrasenaOK){
+        return next(new ErrorHandler("Contraseña invalida",401))
+    }
+
+    const token = user.getJwtToken();
+
+    res.status(201).json({
+        success:true,
+        token,
+        user
+    })
+
 })
 
 //ver lista de usuarios 
