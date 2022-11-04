@@ -16,7 +16,7 @@ import {Link } from "react-router-dom"
 
 export const UserList = () => {
     
-    const { loading, usuarios} = useSelector(state=> state.Users)
+    const { loading, usuarios} = useSelector(state=> state.users)
     //const alert= useAlert();
     
     const dispatch = useDispatch();
