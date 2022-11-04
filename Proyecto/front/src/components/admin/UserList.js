@@ -29,7 +29,7 @@ export const UserList = () => {
     }, [dispatch])
 
 
-    const setUsers = () => { //funcion para mostrar los usuarios 
+    const setUser = () => { //funcion para mostrar los usuarios 
         const data = { //data es un objeto
             columns: [ //se reemplaza luego por la data de la base de datos
                 {
@@ -44,7 +44,7 @@ export const UserList = () => {
                 },
                 {
                     label: 'Password',
-                    field: 'passwprd',
+                    field: 'password',
                     sort: 'asc'
                 },
                 {
@@ -64,27 +64,26 @@ export const UserList = () => {
             ],
             rows: [] //tantas filas como productos haya en la base de datos
         }
-        usuarios.forEach(user => {
-            data.rows.push({ //se reemplaza luego por la data de la base de datos
+        usuarios.map(function(user) { //recorro todos los usuarios por cada usuario que encuentre voy a crear una fila
+            data.rows.push({ //agrego una fila a la tabla con los datos del usuario que estoy recorriendo en ese momento
                 name: user.name,
                 email: user.email,
                 password: user.password,
-                avatar: user.avatar.url,
+                avatar: user.avatar,
                 role: user.role,
-                actions: <Fragment>
-                    <Link to={`/usuario/${user._id}`} className="btn btn-primary py-1 px-2">
-                        <i className="fa fa-eye"></i>
-                        </Link><Link to="/" className="btn btn-warning py-1 px-2" >
+                actions: <Fragment> {/* fragment es un contenedor que no se muestra en el html */}
+                    <Link to={`/usuarios/${user._id}`} className="btn btn-primary py-1 px-2">
                         <i className="fa fa-pencil"></i>
                     </Link>
-
-                    <Link to="/" className="btn btn-danger py-1 px-2">
+                    <button className="btn btn-danger py-1 px-2 ml-2">
                         <i className="fa fa-trash"></i>
-                    </Link> 
+                    </button>
                 </Fragment>
             })
         })
+
         return data;
+
     }
 
     
@@ -104,7 +103,7 @@ export const UserList = () => {
 
                         {loading ? <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> :(
                             <MDBDataTable //tabla de mdbreact para mostrar los productos
-                                data={setUsers()} //le paso la data que cree con la funcion setProducts
+                                data={setUser()} //le paso la data que cree con la funcion setProducts
                                 className="px-3"
                                 bordered //borde de la tabla
                                 striped //filas alternadas
