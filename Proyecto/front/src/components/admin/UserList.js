@@ -1,15 +1,22 @@
 import React, { Fragment, useEffect } from 'react'
 import { MDBDataTable } from 'mdbreact'
+
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-//import { useAlert } from 'react-alert'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../actions/userActions'
 import {Link } from "react-router-dom"
 
+
+//import { useAlert } from 'react-alert'
+
+
+
+
 export const UserList = () => {
     
-    const { loading, usuarios} = useSelector(state=> state.users)
+    const { loading, usuarios} = useSelector(state=> state.Users)
     //const alert= useAlert();
     
     const dispatch = useDispatch();
@@ -18,11 +25,11 @@ export const UserList = () => {
         //     return alert.error(error)
         // }
 
-        dispatch(getUsers);
+        dispatch(getUsers());
     }, [dispatch])
 
 
-    const setUsers = () => { //funcion para mostrar los productos en la tabla
+    const setUsers = () => { //funcion para mostrar los usuarios 
         const data = { //data es un objeto
             columns: [ //se reemplaza luego por la data de la base de datos
                 {

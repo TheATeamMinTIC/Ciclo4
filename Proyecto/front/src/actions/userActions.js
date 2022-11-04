@@ -13,6 +13,7 @@ import { ALL_USERS_REQUEST,
 export const getUsers = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_USERS_REQUEST }); //enviamos la peticion
+        
         const { data } = await axios.get('api/usuarios'); //enviamos la peticion al backend
 
         dispatch({

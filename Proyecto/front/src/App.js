@@ -16,6 +16,7 @@ import NewProduct from './components/admin/newProduct';
 import UserList from './components/admin/UserList';
 import Cart from './components/cart/Cart';
 
+
 function App() {
   return (
     <Router>
@@ -30,11 +31,12 @@ function App() {
         <Route path="/productoscliente" element={<Verproductos/>}/>
         <Route path="/ventasadmin" element={<Ventasadmin/>}/> 
         <Route path="/producto/:id" element={<ProductDetails/>}/>
-        <Route path='/admin/dashboard' element={<Dashboard/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path="/productList" element={<ProductList />}/>
         <Route path="/nuevoProducto" element={<NewProduct />}/>     
         <Route path="/userList" element={<UserList />}/>
         <Route path="/cart" element={<Cart />}/>
+        
         
       </Routes>
       
