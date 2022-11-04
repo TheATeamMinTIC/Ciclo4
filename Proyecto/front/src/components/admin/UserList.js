@@ -25,7 +25,7 @@ export const UserList = () => {
         //     return alert.error(error)
         // }
 
-        dispatch(getUsers());
+        dispatch(getUsers()); //llamamos a la accion de userActions para obtener los usuarios de la base de datos y los guardamos en el state de redux users 
     }, [dispatch])
 
 
