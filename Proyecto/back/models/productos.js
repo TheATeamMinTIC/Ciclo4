@@ -89,6 +89,13 @@ const productosSchema = new mongoose.Schema({
 
         }
     ],
+
+    user:{
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true
+    },
+
     fechaCreacion: {
         type: Date,
         default: Date.now //fecha de creacion del producto
