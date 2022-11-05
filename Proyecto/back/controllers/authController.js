@@ -51,6 +51,19 @@ exports.loginUser = catchAsyncErrors (async(req, res, next)=>{
 
 })
 
+//Cerrar sesion(logout)
+exports.logOut = catchAsyncErrors(async(req,res,next)=>{
+    res.cookie("token",null,{
+        expires: new Date(Date.now()),
+        httpOnly:true
+    })
+    res.status(200).json({
+        success:true,
+        message: "Cerró sesión"
+    })
+})
+
+
 //ver lista de usuarios 
 exports.getUsers = catchAsyncErrors(async (req, res, next) => { //trabaja con un requisito, una respuesta y un next, ejecute una acción al terminar
     
