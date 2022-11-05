@@ -53,6 +53,7 @@ const productosSchema = new mongoose.Schema({
                 "SQL",
                 "AWS",
                 "android",
+                "cloud"
             ],
         } //enum es para que solo se puedan ingresar los valores que se encuentran en el array
     },
