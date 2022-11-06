@@ -130,6 +130,33 @@ exports.resetPassword = catchAsyncErrors(async (req,res,next) =>{
 
 })
 
+//Ver perfil de usuario (Usuario que esta logueado)
+exports.getUserProfile= catchAsyncErrors( async (req, res, next)=>{
+    const user= await User.findById(req.user.id);
+
+    res.status(200).json({
+        success:true,
+        user
+    })
+})
+
+//Update Contraseña (usuario logueado)
+exports.updatePassword= catchAsyncErrors(async (req, res, next) =>{
+    const user= await User.findById(req.user.id).select("+password");
+
+    //Revisamos si la contraseña vieja es igual a la nueva
+    const sonIguales = await user.compararPass(req.body.oldPassword)
+
+    if (!sonIguales){
+        return next (new ErrorHandler("La contraseña actual no es correcta", 401))
+    }
+
+    user.password= req.body.newPassword;
+    await user.save();
+
+    tokenEnviado(user, 200, res)
+})
+
 //ver lista de usuarios 
 exports.getUsers = catchAsyncErrors(async (req, res, next) => { //trabaja con un requisito, una respuesta y un next, ejecute una acción al terminar
     
