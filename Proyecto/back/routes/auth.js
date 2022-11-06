@@ -1,17 +1,11 @@
 const express = require ("express");
-const { newUser,getUsers,getUserById,updateUser,deleteUser, 
-    loginUser, logOut, forgotPassword, resetPassword, getUserProfile, 
-    updatePassword } = require("../controllers/authController");
+const { newUser, loginUser, logOut, forgotPassword, resetPassword, getUserProfile, 
+    updatePassword, updateProfile, getAllUsers, getUserDetails, updateUser} = require("../controllers/authController");
 
-const { isAuthenticatedUser } = require("../middleware/auth");
+const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 const router = express.Router();
 
 router.route('/usuario/registro').post(newUser);//creamos la ruta, post es para crear, route es para crear una ruta, newProduct es el metodo que vamos a ejecutar
-
-router.route('/usuarios').get(getUsers); //creamos la ruta, get es para obtener, post es para crear, route es para crear una ruta, getProducts es el metodo que vamos a ejecutar, createProduct es el metodo que vamos a ejecutar
-router.route('/usuario/:id').get(getUserById); //creamos la ruta, get es para obtener, route es para crear una ruta, getProductById es el metodo que vamos a ejecutar, es necesario el :id para que sepa que es un parametro
-router.route('/usuario/:id').put(updateUser); //creamos la ruta, put es para actualizar, route es para crear una ruta, updateProduct es el metodo que vamos a ejecutar, es necesario el :id para que sepa que es un parametro
-router.route('/usuario/:id').delete(deleteUser); //creamos la ruta, delete es para eliminar, route es para crear una ruta, deleteProduct es el metodo que vamos a ejecutar, es necesario el :id para que sepa que es un parametro
 
 router.route('/login').get(loginUser)
 router.route('/logout').get(isAuthenticatedUser,logOut)
@@ -19,5 +13,11 @@ router.route('/forgotPassword').post(forgotPassword)
 router.route('/resetPassword/:token').post(resetPassword)
 router.route('/activeUser').get(isAuthenticatedUser,getUserProfile)
 router.route('/activeUser/updatePassword').put(isAuthenticatedUser,updatePassword)
+router.route('/activeUser/updateProfile').put(isAuthenticatedUser, updateProfile)
+
+//Rutas admin
+router.route('/admin/allUsers').get(isAuthenticatedUser, authorizeRoles("admin"), getAllUsers)
+router.route('/admin/user/:id').get(isAuthenticatedUser, authorizeRoles("admin"), getUserDetails)
+router.route('/admin/updateUser/:id').put(isAuthenticatedUser, authorizeRoles("admin"), updateUser)
 
 module.exports = router;

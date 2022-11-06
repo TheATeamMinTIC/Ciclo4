@@ -157,76 +157,70 @@ exports.updatePassword= catchAsyncErrors(async (req, res, next) =>{
     tokenEnviado(user, 200, res)
 })
 
-//ver lista de usuarios 
-exports.getUsers = catchAsyncErrors(async (req, res, next) => { //trabaja con un requisito, una respuesta y un next, ejecute una acción al terminar
-    
-    const users = await User.find(); //buscamos todos los productos con el modelo de productos, devolución de la promesa
-    //sabe que es una entidad y puedo interacturar con ella, producto es el modelo de productos, find es un método de mongoose, devuelve una promesa
- 
-    if (!users){
-        return next(new ErrorHandler("Usuario no encontrado",404))
-        }
-     //si no hay productos, respondo con un status 404 que es que no se encontro el recurso, json es un objeto
-
-    res.status(200).json({  //status 200 es que todo esta bien, json es un objeto, getmapping, convierte el objeto en json
-        success: true,
-        count: users.length, //cuantos productos hay
-        users, //productos que encontramos
-        message: 'Mostrar todos los usuarios'
-    })//status 200 es que todo esta bien, json es que vamos a enviar un json
-
-})
-
-//actualizar Usuario
-exports.updateUser = catchAsyncErrors(async (req, res, next) => { //async para que sea asincrono, req es el request, res es la respuesta, next es para que ejecute una acción al terminar
-    let user = await User.findById(req.params.id); //buscamos un producto por id, el req.params.id es el id que viene por la url, corresponde al producto que busco
-
-    if (!user){
-        return next(new ErrorHandler("Usuario no encontrado",404))
-        }
-
-    user = await User.findByIdAndUpdate(req.params.id, req.body, { //el metodo necesita el id, el body que viene del front, y un objeto con las opciones
-        new: true, //devuelve el producto actualizado
-        runValidators: true //corre las validaciones del modelo
-    }) //actualizamos el producto, el req.params.id es el id que viene por la url, corresponde al producto que busco, el req.body es lo que viene del front, el {new: true, runValidators: true} es para que devuelva el producto actualizado y que corra las validaciones
-    res.status(200).json({
-        success: true,
-        message: 'Usuario actualizado',
-        user  //producto actualizado 
-    }) //res status 200 es que todo esta bien, json es un objeto
-})
-
-//consulta por id
-exports.getUserById = catchAsyncErrors( async (req, res, next) => {
-    const user = await User.findById(req.params.id); //buscamos un producto por id, el req.params.id es el id que viene por la url, corresponde al producto que busco
-    //debe llamarse product diferente al declarado al inicio, del req busque un parametro params que va por id. 
-    //si existe o no
-    if(!user){//si no existe el producto
-            if (!user){
-                return next (new ErrorHandler("Usuario no encotrado",404))
-            }//Aplicando Error handler
-
+//Update perfil de usuario (logueado)
+exports.updateProfile= catchAsyncErrors(async(req,res,next)=>{
+    //Actualizar el email por user a decisiòn de cada uno
+    const newUserData ={
+        nombre: req.body.nombre,
     }
+
+    //updata Avatar: pendiente
+
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new:true,
+        runValidators:true,
+        useFindAndModify: false
+    })
+
     res.status(200).json({
-        success: true,
-        message: 'Mostrar usuario',
+        success:true,
         user
+    })
+})
 
-    }) //res status 200 es que todo esta bien, json es un objeto
 
-}) //trabaja con un requisito, una respuesta y un next, ejecute una acción al terminar
+//Servicios controladores sobre usuarios por parte de los ADMIN
 
-//eliminar Usuario
-exports.deleteUser = catchAsyncErrors(async (req, res, next) => { //async para que sea asincrono, req es el request, res es la respuesta, next es para que ejecute una acción al terminar
-    const user = await User.findById(req.params.id); //buscamos un producto por id, el req.params.id es el id que viene por la url, corresponde al producto que busco
+//Ver todos los usuarios
+exports.getAllUsers = catchAsyncErrors(async(req, res, next)=>{
+    const users = await User.find();
+
+    res.status(200).json({
+        success:true,
+        users
+    })
+})
+
+//Ver el detalle de 1 usuario
+exports.getUserDetails= catchAsyncErrors(async(req, res, next)=>{
+    const user= await User.findById(req.params.id);
 
     if (!user){
-        return next(new ErrorHandler("Usuario no encontrado",404))
-        }
+        return next(new ErrorHandler(`No se ha encontrado ningun usuario con el id: ${req.params.id}`))
+    }
 
-    await user.remove(); //eliminamos el producto, remove() es un método de mongoose que elimina el producto
     res.status(200).json({
         success: true,
-        message: 'Usuario eliminado' //mensaje de producto eliminado
-    }) //res status 200 es que todo esta bien, json es un objeto
-})  
+        user
+    })
+})
+
+//Actualizar perfil de usuario (como administrador)
+exports.updateUser= catchAsyncErrors (async(req, res, next)=>{
+    const nuevaData={
+        nombre: req.body.nombre,
+        email: req.body.email,
+        role: req.body.rol
+    }
+
+    const user= await User.findByIdAndUpdate(req.params.id, nuevaData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+
+    res.status(200).json({
+        success:true,
+        user
+    })
+})
