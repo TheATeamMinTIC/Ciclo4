@@ -9,9 +9,9 @@ exports.newOrder = catchAsyncErrors (async (req,res,next)=>{
     const { 
         Items,
         envioInfo,
-        pagoItems,
-        pagoImpuesto,
-        pagoEnvio,
+        precioItems,
+        precioImpuesto,
+        precioEnvio,
         precioTotal,
         pagoInfo
     } = req.body;  //obtenemos los datos del body que viene del front o del postman
@@ -19,12 +19,12 @@ exports.newOrder = catchAsyncErrors (async (req,res,next)=>{
     const order = await Order.create({
         Items,
         envioInfo,
-        pagoItems,
-        pagoImpuesto,
-        pagoEnvio,
+        precioItems,
+        precioImpuesto,
+        precioEnvio,
         precioTotal,
         pagoInfo,
-        fechaPago:Date.now(),
+        fechaPago: Date.now(),
         user:req.user._id 
     })
 

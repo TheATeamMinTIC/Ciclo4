@@ -23,7 +23,7 @@ const orderSchema = new mongoose.Schema({
    
     },
     //relacion con el usuario
-    usuario:{
+    user:{
         type:mongoose.Schema.ObjectId,
         required:true,
         ref:'auth'

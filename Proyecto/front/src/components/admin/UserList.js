@@ -1,4 +1,5 @@
 import React, {Component} from 'react'; 
+import Sidebar from './Sidebar'
 
 class UserList extends Component {
     constructor(){
@@ -15,8 +16,8 @@ class UserList extends Component {
     render(){
         return(
             <div>
-                <h1>Lista de usuarios</h1>
-                <div className="col-12 col-md-2">
+                
+                <div className="col-14 col-md-2">
                     <Sidebar /> {/* sidebar requerido*/}
                 </div>
 
