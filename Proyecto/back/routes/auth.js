@@ -16,7 +16,7 @@ router.route('/activeUser/updatePassword').put(isAuthenticatedUser,updatePasswor
 router.route('/activeUser/updateProfile').put(isAuthenticatedUser, updateProfile)
 
 //Rutas admin
-router.route('/admin/allUsers').get(isAuthenticatedUser, authorizeRoles("admin"), getAllUsers)
+router.route('/admin/allUsers').get( isAuthenticatedUser, authorizeRoles("admin"),getAllUsers)
 router.route('/admin/user/:id').get(isAuthenticatedUser, authorizeRoles("admin"), getUserDetails)
 router.route('/admin/updateUser/:id').put(isAuthenticatedUser, authorizeRoles("admin"), updateUser)
 router.route('/admin/deleteUser/:id').delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser)

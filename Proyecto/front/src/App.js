@@ -36,6 +36,8 @@ function App() {
         <Route path="/nuevoProducto" element={<NewProduct />}/>     
         <Route path="/userlist" element={<UserList />}/>
         <Route path="/cart" element={<Cart />}/>
+        <Route path="*" element={<h1>404: Not Found</h1>}/>
+        
         
         
       </Routes>
