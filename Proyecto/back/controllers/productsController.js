@@ -2,27 +2,32 @@
 
 const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const producto = require('../models/productos'); //importamos el modelo de productos
+const APIFeatures = require('../utils/apiFeatures');
 const ErrorHandler = require('../utils/errorHandler');
 const fetch =(url)=>import('node-fetch').then(({default:fetch})=>fetch(url)); //importamos el fetch de node-fetch 
 
 //ver lista de productos 
 exports.getProducts = catchAsyncErrors(async (req, res, next) => { //trabaja con un requisito, una respuesta y un next, ejecute una acción al terminar
     
-    const productos = await producto.find(); //buscamos todos los productos con el modelo de productos, devolución de la promesa
-    //sabe que es una entidad y puedo interacturar con ella, producto es el modelo de productos, find es un método de mongoose, devuelve una promesa
+    const resPerPage = 3;
+    const productsCount = await producto.countDocuments();
 
-    if (!productos){
-        return next(new ErrorHandler("Producto no encontrado",404))
-        }
-     //si no hay productos, respondo con un status 404 que es que no se encontro el recurso, json es un objeto
+    const apiFeatures = new APIFeatures(producto.find(), req.query)
+        .search()
+        .filter();
 
-    res.status(200).json({  //status 200 es que todo esta bien, json es un objeto, getmapping, convierte el objeto en json
+    let products = await apiFeatures.query;
+    let filteredProductsCount= products.length;
+    apiFeatures.pagination(resPerPage);
+    products = await apiFeatures.query.clone();
+
+    res.status(200).json({
         success: true,
-        count: productos.length, //cuantos productos hay
-        productos, //productos que encontramos
-        message: 'Mostrar todos los productos'
-    })//status 200 es que todo esta bien, json es que vamos a enviar un json
-
+        productsCount,
+        resPerPage,
+        filteredProductsCount,
+        products
+    })
 })
 
 
