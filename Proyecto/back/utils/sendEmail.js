@@ -6,14 +6,17 @@ const sendEmail = async options =>{
         host: "smtp.office365.com",
         port: 587,
         auth: {
+
+
           user: "nova_courses@outlook.com",
           pass: "agwltpgmffafwdbh"
+
         }
       });
       const mensaje={
         from: "NOVA <nova_courses@outlook.com>",
         to: options.email,
-        subject: options.subject,
+        subject: options.subject, 
         text: options.mensaje
       }
       await transport.sendMail(mensaje)

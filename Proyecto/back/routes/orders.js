@@ -9,6 +9,7 @@ const { newOrder,  //traemos los metodos del controlador
     deleteOrder
 } = require("../controllers/orderController");
 
+
 //traer los metodos de autenticación a la ruta
 const { isAuthenticatedUser, authorizeRoles } = require('../middleware/auth');
 
@@ -22,5 +23,7 @@ router.route('/orders/yo').get(isAuthenticatedUser, myOrders); //creamos la ruta
 router.route('/admin/orders').get(isAuthenticatedUser, authorizeRoles('admin'), allOrders); //creamos la ruta, get es para obtener, route es para crear una ruta, allOrders es el metodo que vamos a ejecutar
 router.route('/admin/order/:id').put(isAuthenticatedUser, authorizeRoles('admin'), UpdateOrder); //creamos la ruta, put es para actualizar, route es para crear una ruta, updateOrder es el metodo que vamos a ejecutar, es necesario el :id para que sepa que es un parametro
 router.route('/admin/order/:id').delete(isAuthenticatedUser, authorizeRoles('admin'), deleteOrder); //creamos la ruta, delete es para eliminar, route es para crear una ruta, deleteOrder es el metodo que vamos a ejecutar, es necesario el :id para que sepa que es un parametro
+
+
 
 module.exports = router; //exportamos el modulo para que lo pueda usar el server

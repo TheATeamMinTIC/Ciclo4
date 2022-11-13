@@ -2,7 +2,10 @@ const express = require ("express");
 const { newUser, loginUser, logOut, forgotPassword, resetPassword, getUserProfile, 
     updatePassword, updateProfile, getAllUsers, getUserDetails, updateUser, deleteUser} = require("../controllers/authController");
 
+
+
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
+
 const router = express.Router();
 
 router.route('/usuario/registro').post(newUser);//creamos la ruta, post es para crear, route es para crear una ruta, newProduct es el metodo que vamos a ejecutar

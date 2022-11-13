@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import Search from './Search';
 
 
 
@@ -10,44 +8,16 @@ const Header = () => {
   return (
     
     <Fragment>
-    <Navbar bg="light" expand="lg">
-      <Container>
-       
-        <Navbar.Brand href="/">NOVA.com</Navbar.Brand> 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
 
-          <Nav className="me-auto">
-            <Nav.Link href="/ventasadmin">Ventas</Nav.Link>
-            <Nav.Link href="/productoscliente">Cliente</Nav.Link>
-            <Nav.Link href="/productosadmin">Admin</Nav.Link> 
-            <Nav.Link href="/cart">Carrito</Nav.Link> 
-            
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
         <nav className='navbar row'>
-            <div className='col-12 col-md-3'>
+            <div className='col-12 col-md-2'>
                 <div className='navbar-brand'>
-                <Link to="/" ><img  className='logo' src="./nova.png" alt="NOVA COURSES"></img></Link>
+                <Link to="/" ><img  className='logo' src="../3.png" alt="NOVA COURSES"></img></Link>
                 </div>
             </div>
 
             <div className='col-12 col-md-6 mt-2 mt-md-0'>
-                <div className="input-group">
-                    <input 
-                        type="text"
-                        id="search_field"
-                        class="form-control"
-                        placeholder='¿Que curso busca?'></input>
-                        <div class="input-group-append">
-                            <button id="search-btn" class="btn">
-                                <i class="fa fa-search-plus fa-2x text-white" aria-hidden="true"></i>
-                                
-                                </button>    
-                        </div>
-                </div>
+            <Search />
             </div>
             <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
             <div className="ml-4 dropdown d-inline">

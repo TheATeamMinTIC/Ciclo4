@@ -2,27 +2,32 @@
 
 const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const producto = require('../models/productos'); //importamos el modelo de productos
+const APIFeatures = require('../utils/apiFeatures');
 const ErrorHandler = require('../utils/errorHandler');
 const fetch =(url)=>import('node-fetch').then(({default:fetch})=>fetch(url)); //importamos el fetch de node-fetch 
 
 //ver lista de productos 
 exports.getProducts = catchAsyncErrors(async (req, res, next) => { //trabaja con un requisito, una respuesta y un next, ejecute una acción al terminar
     
-    const productos = await producto.find(); //buscamos todos los productos con el modelo de productos, devolución de la promesa
-    //sabe que es una entidad y puedo interacturar con ella, producto es el modelo de productos, find es un método de mongoose, devuelve una promesa
+    const resPerPage = 4;
+    const productsCount = await producto.countDocuments();
 
-    if (!productos){
-        return next(new ErrorHandler("Producto no encontrado",404))
-        }
-     //si no hay productos, respondo con un status 404 que es que no se encontro el recurso, json es un objeto
+    const apiFeatures = new APIFeatures(producto.find(), req.query)
+        .search()
+        .filter();
 
-    res.status(200).json({  //status 200 es que todo esta bien, json es un objeto, getmapping, convierte el objeto en json
+    let products = await apiFeatures.query;
+    let filteredProductsCount= products.length;
+    apiFeatures.pagination(resPerPage);
+    products = await apiFeatures.query.clone();
+
+    res.status(200).json({
         success: true,
-        count: productos.length, //cuantos productos hay
-        productos, //productos que encontramos
-        message: 'Mostrar todos los productos'
-    })//status 200 es que todo esta bien, json es que vamos a enviar un json
-
+        productsCount,
+        resPerPage,
+        filteredProductsCount,
+        products
+    })
 })
 
 
@@ -92,6 +97,81 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => { //req es el re
     }) //status 201 es que se creo un nuevo recurso
 }) //trabaja con un requisito, una respuesta y un next, ejecute una acción al terminar
 //promesa para crear un nuevo producto espero que se cree y luego lo muestro en la consola
+
+//Crear una review 
+exports.createProductReview = catchAsyncErrors(async(req,res,next)=>{
+    const { rating,comentario,idProducto} = req.body;
+
+    const opinion = {
+        nombreCliente : req.user.nombre,
+        rating:Number(rating),
+        comentario
+    }
+
+    const product= await producto.findById(idProducto);
+
+    const isReviewed = product.opiniones.find(item=>
+        item.nombreCliente === req.user.nombre)
+
+        if (isReviewed){
+            product.opiniones.forEach(opinion=>{
+                if(opinion.nombreCliente=== req.user.nombre){
+                    opinion.comentario = comentario,
+                    opinion.rating=rating
+                }
+            })
+        }else{
+            product.opiniones.push(opinion)
+            product.numCalificaciones = product.opiniones.length
+        }
+
+        product.calificacion= product.opiniones.reduce((acc, opinion)=>
+        opinion.rating + acc, 0)/product.opiniones.length  //Con esta linea se logra calcular el promedio de calificaciones
+
+        await product.save({validateBeforeSave:false});
+        res.status(200).json({
+            success:true,
+            message:"Hemos opinado correctamente"
+        })
+})
+
+//Ver todas las review de un producto
+exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
+    const product = await producto.findById(req.query.id)
+
+    res.status(200).json({
+        success: true,
+        opiniones: product.opiniones
+    })
+})
+
+//Eliminar review
+exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
+    const product = await producto.findById(req.query.idProducto);
+
+    const opiniones = product.opiniones.filter(opinion => 
+        opinion._id.toString() !== req.query.idReview.toString());
+
+        const numCalificaciones = opiniones.length;
+
+        const calificacion = product.opiniones.reduce((acc, Opinion) =>
+            Opinion.rating + acc, 0) / opiniones.length;
+
+        await producto.findByIdAndUpdate(req.query.idProducto, {
+            opiniones,
+            calificacion,
+            numCalificaciones
+        }, {
+            new: true,
+            runValidators: true,
+            useFindAndModify: false
+        })
+        res.status(200).json({
+            success: true,
+            message: "review eliminada correctamente"
+        })
+
+    })
 
 
 //Metodo fetch 

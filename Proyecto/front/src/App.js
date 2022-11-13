@@ -2,12 +2,12 @@
 import './App.css';
 import React from 'react';
 
-import Footer from './components/Footer';
-import Header from './components/Header';
+import Footer from './components/layout/Footer';
+import Header from './components/layout/Header';
 import Productosadmin from './components/Productosadmin';
 //import Productoscliente from './components/Productoscliente';
 import Ventasadmin from './components/Ventasadmin';
-import Verproductos from './components/Verproductos';
+import Home from './components/Home';
 import { ProductDetails } from './components/products/ProductDetails';
 import {BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import {Dashboard} from './components/admin/Dashboard';
@@ -25,16 +25,17 @@ function App() {
       <Header/>
       {/* Navegacion */}
       <Routes>
-        <Route path="/" element={<Verproductos/>}/>
+        <Route path="/" element={<Home/>}/>
         
         <Route path="/productosadmin" element={<Productosadmin/>}/>
-        <Route path="/productoscliente" element={<Verproductos/>}/>
+        <Route path="/productoscliente" element={<Home/>}/>
         <Route path="/ventasadmin" element={<Ventasadmin/>}/> 
         <Route path="/producto/:id" element={<ProductDetails/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path="/productList" element={<ProductList />}/>
         <Route path="/nuevoProducto" element={<NewProduct />}/>     
         <Route path="/userlist" element={<UserList />}/>
+        <Route path="/search/:keyword" element={<Home />}/>
         <Route path="/cart" element={<Cart />}/>
         <Route path="*" element={<h1>404: Not Found</h1>}/>
         
