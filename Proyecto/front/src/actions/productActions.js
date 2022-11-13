@@ -10,11 +10,11 @@ import { ALL_PRODUCTS_REQUEST,
 } from '../constants/productConstants'; //importamos las constantes  
 
 // Get all products
-export const getProducts = (keyword = '', currentPage = 1, price, category, rating = 0) => async (dispatch) => { //dispatch es una funcion que me permite ejecutar una accion
+export const getProducts = (currentPage = 1) => async (dispatch) => { //dispatch es una funcion que me permite ejecutar una accion
     try { //intente hacer esto
         dispatch({ type: ALL_PRODUCTS_REQUEST }); //ejecutar la accion de tipo ALL_PRODUCTS_REQUEST
 
-        const {data} = await axios.get('api/productos') //obtener los productos de la base de datos')
+        const {data} = await axios.get(`api/productos?page=${currentPage}`) //obtener los productos de la base de datos')
 
         dispatch({ //ejecutar la accion de tipo ALL_PRODUCTS_SUCCESS
             type: ALL_PRODUCTS_SUCCESS,

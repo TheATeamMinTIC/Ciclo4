@@ -9,7 +9,7 @@ const fetch =(url)=>import('node-fetch').then(({default:fetch})=>fetch(url)); //
 //ver lista de productos 
 exports.getProducts = catchAsyncErrors(async (req, res, next) => { //trabaja con un requisito, una respuesta y un next, ejecute una acción al terminar
     
-    const resPerPage = 3;
+    const resPerPage = 4;
     const productsCount = await producto.countDocuments();
 
     const apiFeatures = new APIFeatures(producto.find(), req.query)
