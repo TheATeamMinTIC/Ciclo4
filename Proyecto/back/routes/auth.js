@@ -3,6 +3,7 @@ const { newUser,getUsers,getUserById,updateUser,deleteUser,
     loginUser, logOut, forgotPassword, resetPassword, getUserProfile, 
     updatePassword } = require("../controllers/authController");
 
+    
 const { isAuthenticatedUser } = require("../middleware/auth");
 const router = express.Router();
 
