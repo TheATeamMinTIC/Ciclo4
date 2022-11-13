@@ -1,14 +1,16 @@
 import React, { Fragment,useEffect, useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { getProducts } from '../actions/productActions'
-import { Link } from 'react-router-dom' //para poder usar el link de react router dom link es para poder hacer un link a otra pagina
+import { useParams, Link } from 'react-router-dom' //para poder usar el link de react router dom link es para poder hacer un link a otra pagina
 //import { useAlert } from 'react-alert'
 import Pagination from 'react-js-pagination'
 
-export const Verproductos = () => {
-  const [currentPage, setCurrentPage]=useState(1)
-  const { loading, products, resPerPage, productsCount} = useSelector(state => state.products) //trae los valores de los estados que estan en el front
-   
+export const Home = () => {
+    const params = useParams();
+    const keyword = params.keyword; 
+    const [currentPage, setCurrentPage]=useState(1)
+    const { loading, products, resPerPage, productsCount} = useSelector(state => state.products) //trae los valores de los estados que estan en el front
+
     //const alert = useAlert()  //lo inicializo 
 
 
@@ -18,9 +20,9 @@ export const Verproductos = () => {
         // if(error){
         //     return alert.error(error) //muestra el error
         // }
-        dispatch(getProducts(currentPage)) //ejecutar la accion de obtener productos
+        dispatch(getProducts(currentPage,keyword)) //ejecutar la accion de obtener productos
         //alert.success('Ok. Listo') //mostrar alerta de que todo salio bien
-    }, [dispatch,currentPage]) //ver como un arregle el dispatch es un parametro que se pasa a la funcion
+    }, [dispatch,currentPage,keyword]) //ver como un arregle el dispatch es un parametro que se pasa a la funcion
 
     function setCurrentPageNo(pageNumber){
         setCurrentPage(pageNumber)
@@ -81,4 +83,4 @@ export const Verproductos = () => {
   )
 }
 
-export default Verproductos
+export default Home

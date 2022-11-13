@@ -35,6 +35,7 @@ function App() {
         <Route path="/productList" element={<ProductList />}/>
         <Route path="/nuevoProducto" element={<NewProduct />}/>     
         <Route path="/userlist" element={<UserList />}/>
+        <Route path="/search/:keyword" element={<Home />}/>
         <Route path="/cart" element={<Cart />}/>
         <Route path="*" element={<h1>404: Not Found</h1>}/>
         
