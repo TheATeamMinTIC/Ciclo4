@@ -8,7 +8,7 @@ import { getProducts } from '../../actions/productActions'
 import {Link } from "react-router-dom"
 
 export const ProductList = () => {
-    const { loading, productos} = useSelector(state=> state.products)
+    const { loading, products} = useSelector(state=> state.products)
     //const alert= useAlert();
 
     const dispatch = useDispatch();
@@ -51,7 +51,7 @@ export const ProductList = () => {
             ],
             rows: [] //tantas filas como productos haya en la base de datos
         }
-        productos.forEach(product => { //recorro todos los productos por cada producto que encuentre voy a crear una fila
+        products.forEach(product => { //recorro todos los productos por cada producto que encuentre voy a crear una fila
             data.rows.push({ //agrego una fila a la tabla con los datos del producto que estoy recorriendo en ese momento 
                 nombre: product.nombre, 
                 precio: `$${product.precio}`,

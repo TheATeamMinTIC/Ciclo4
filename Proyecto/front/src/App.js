@@ -2,8 +2,8 @@
 import './App.css';
 import React from 'react';
 
-import Footer from './components/Footer';
-import Header from './components/Header';
+import Footer from './components/layout/Footer';
+import Header from './components/layout/Header';
 import Productosadmin from './components/Productosadmin';
 //import Productoscliente from './components/Productoscliente';
 import Ventasadmin from './components/Ventasadmin';
