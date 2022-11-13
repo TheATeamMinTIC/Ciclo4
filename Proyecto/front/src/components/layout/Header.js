@@ -1,7 +1,4 @@
 import React, { Fragment } from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Search from './Search';
 
@@ -11,27 +8,11 @@ const Header = () => {
   return (
     
     <Fragment>
-    <Navbar bg="light" expand="lg">
-      <Container>
-       
-        <Navbar.Brand href="/">NOVA.com</Navbar.Brand> 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
 
-          <Nav className="me-auto">
-            <Nav.Link href="/ventasadmin">Ventas</Nav.Link>
-            <Nav.Link href="/productoscliente">Cliente</Nav.Link>
-            <Nav.Link href="/productosadmin">Admin</Nav.Link> 
-            <Nav.Link href="/cart">Carrito</Nav.Link> 
-            
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
         <nav className='navbar row'>
-            <div className='col-12 col-md-3'>
+            <div className='col-12 col-md-2'>
                 <div className='navbar-brand'>
-                <Link to="/" ><img  className='logo' src="../nova.png" alt="NOVA COURSES"></img></Link>
+                <Link to="/" ><img  className='logo' src="../3.png" alt="NOVA COURSES"></img></Link>
                 </div>
             </div>
 
