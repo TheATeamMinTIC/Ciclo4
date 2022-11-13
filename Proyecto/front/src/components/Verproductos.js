@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { getProducts } from '../actions/productActions'
 import { Link } from 'react-router-dom' //para poder usar el link de react router dom link es para poder hacer un link a otra pagina
 //import { useAlert } from 'react-alert'
+import Banner from './Banner'
 
 const Verproductos = () => {
   const { loading, productos } = useSelector(state => state.products) //trae los valores de los estados que estan en el front
@@ -21,7 +22,10 @@ const Verproductos = () => {
     }, [dispatch]) //ver como un arregle el dispatch es un parametro que se pasa a la funcion
 
   return (
+    
+    
     <Fragment>
+    <Banner />
     {loading ? <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> : ( //si esta cargando muestra el mensaje loading si no muestra el fragment de abajo 
         <Fragment>
         
