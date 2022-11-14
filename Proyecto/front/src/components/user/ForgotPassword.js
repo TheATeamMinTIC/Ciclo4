@@ -1,28 +1,28 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import MetaData from '../layout/MetaData'
-//import { useAlert } from 'react-alert'
+import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { forgotPassword, clearErrors } from '../../actions/userActions'
 
 export const ForgotPassword = () => {
 
     const [email, setEmail] = useState('')
-    //const alert = useAlert();
+    const alert = useAlert();
     const dispatch = useDispatch();
     const { error, loading, message } = useSelector(state => state.forgotPassword)
 
     useEffect(() => {
 
         if (error) {
-            //alert.error(error);
+            alert.error(error);
             dispatch(clearErrors());
         }
 
         if (message) {
-           // alert.success(message)
+           alert.success(message)
         }
 
-    }, [dispatch])//, alert, error, message])
+    }, [dispatch,alert, error, message]) 
 
     const submitHandler = (e) => {
         e.preventDefault();
