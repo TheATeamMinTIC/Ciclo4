@@ -15,6 +15,7 @@ import ProductList from './components/admin/ProductList';
 import NewProduct from './components/admin/newProduct';
 import UserList from './components/admin/UserList';
 import Cart from './components/cart/Cart';
+import { Login } from './components/user/Login';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/userlist" element={<UserList />}/>
         <Route path="/search/:keyword" element={<Home />}/>
         <Route path="/cart" element={<Cart />}/>
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<h1>404: Not Found</h1>}/>
         
         
