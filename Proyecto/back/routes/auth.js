@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.route('/usuario/registro').post(newUser);//creamos la ruta, post es para crear, route es para crear una ruta, newProduct es el metodo que vamos a ejecutar
 
-router.route('/login').get(loginUser)
+router.route('/login').post(loginUser)
 router.route('/logout').get(isAuthenticatedUser,logOut)
 router.route('/forgotPassword').post(forgotPassword)
 router.route('/resetPassword/:token').post(resetPassword)
