@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Carousel} from 'react-bootstrap';  
 import 'bootstrap/dist/css/bootstrap.min.css';
 import slide1 from '../assets/banner/uno.png'

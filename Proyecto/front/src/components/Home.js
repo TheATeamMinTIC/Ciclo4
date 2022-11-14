@@ -3,9 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { getProducts } from '../actions/productActions'
 import { useParams, Link } from 'react-router-dom' //para poder usar el link de react router dom link es para poder hacer un link a otra pagina
 //import { useAlert } from 'react-alert'
-<<<<<<< HEAD:Proyecto/front/src/components/Verproductos.js
 import Banner from './Banner'
-=======
 import Pagination from 'react-js-pagination'
 
 export const Home = () => {
@@ -13,7 +11,7 @@ export const Home = () => {
     const keyword = params.keyword; 
     const [currentPage, setCurrentPage]=useState(1)
     const { loading, products, resPerPage, productsCount} = useSelector(state => state.products) //trae los valores de los estados que estan en el front
->>>>>>> ed5a78b125f57a3bc39fe60c6102d106d8be4b94:Proyecto/front/src/components/Home.js
+
 
     //const alert = useAlert()  //lo inicializo 
 
