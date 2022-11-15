@@ -2,19 +2,20 @@ import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import Search from './Search';
 import { useDispatch, useSelector } from 'react-redux'
-//import { useAlert } from 'react-alert'
+import { useAlert } from 'react-alert'
 import { logout} from "../../actions/userActions"
 
 
 const Header = () => {
-   // const alert= useAlert();
+    const {cartItems} = useSelector(state=>state.cart)
+    const alert= useAlert();
     const dispatch= useDispatch();
 
     const { user, loading } = useSelector(state => state.auth)
 
     const logoutHandler = () =>{
         dispatch(logout());
-        //alert.success("LogOut exitoso")
+        alert.success("LogOut exitoso")
     }
   return (
     
@@ -32,7 +33,7 @@ const Header = () => {
             </div>
             <div className="col-12 col-md-5 mt-4 mt-md-0 text-center">
                     <Link to="/cart"><i class="fa fa-shopping-cart fa-2x text-white" aria-hidden="false"></i>
-                        <span className="ml-1" id="cart_count">2</span></Link>
+                        <span className="ml-1" id="cart_count">{cartItems.length}</span></Link>
 
                     {user ? (
                         <div className="ml-4 dropdown d-inline">
