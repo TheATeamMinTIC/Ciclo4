@@ -5,23 +5,29 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const tokenEnviado = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail")
 const crypto = require("crypto")
+const cloudinary= require("cloudinary") //para subir imagenes a cloudinary
 
 //Registrar un nuevo usuario /api/usuario/registro
 
 exports.newUser = catchAsyncErrors(async (req, res, next) =>{
-    const {name,email,password} = req.body;
+    const {nombre, email, password} = req.body; //atributos obligatorios, las trae del body 
+
+    const result= await cloudinary.v2.uploader.upload(req.body.avatar, { //uploader es un metodo de cloudinary, upload es un metodo de uploader, req.body.avatar es el archivo que subimos, y el objeto es la configuracion
+        folder:"avatars",
+        width:240,
+        crop:"scale" //escala la imagen para que quepa en el tamaño
+    }) //subo la imagen a cloudinary
 
     const user = await User.create({
-        name,
+        nombre,
         email,
         password,
         avatar:{
-            public_id:"ANd9GcQDiMJ5vEACXTsbl8Q8q4ed-aoYLRbt4OwbaQ&usqp",
-            url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDiMJ5vEACXTsbl8Q8q4ed-aoYLRbt4OwbaQ&usqp=CAU",
-        },
+            public_id:result.public_id, //cargue la imagen a cloudinary y me devuelve un id publico
+            url:result.secure_url //cargue la imagen a cloudinary y me devuelve una url segura
+        }
     })
-
-    tokenEnviado(user,201,res)
+    tokenEnviado(user,201,res) //envia el token al navegador, recibe user, statusCode, res
 })
 
 //Iniciar sesion-Login
